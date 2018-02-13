@@ -1,0 +1,473 @@
+/***************************** DEFAULTS ***************************************/
+body{
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+	line-height: 1.5;
+	font-family: sans-serif;
+	text-align: center;
+}
+*{
+	box-sizing: border-box;       /* width incluuding margin padding */
+}
+a{
+	text-decoration: none;           /* remove blue underline */
+}
+ul{
+	list-style: none;                 /* remove dots of li */
+	margin: 0;
+	padding: 0;
+	text-align: initial;               /* to align footer links */
+}
+.nav li{
+	display: inline-block;            /* to allign nav items horizontally */
+}
+img{
+	max-width: 100%;                   /* making images responsive */
+	height: auto;
+}
+
+/*************************** CSS CUSTOM VARIABLES SCSS********************************/
+
+/* declaring custom variables     on top of css file */
+:root{
+	--primarycolor:red;
+}
+/* using it */
+h1{
+	font-size: 50px;
+	color: var(--primarycolor);
+}
+
+$primary-color: #333;
+
+body {
+  color: $primary-color;
+}
+                                    /* nesting */
+nav {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+}
+
+/********************************** SASS **********************************************/
+
+/* declaring sass variables */
+$primary-color: #333
+
+/* using it */
+h1 
+  color: $primary-color
+
+/* nesting */
+nav
+  ul
+    list-style: none
+
+/************************ SASS AND SCSS TOGETHER WITH FALL BACKS **************************/
+
+$vars:(
+	yellow: #ff0,
+	lightblue: #a1dfcd;
+);
+
+:root{
+	@each $property , $value in $vars {
+		--#{$property}: #{$value};          /*this function takes all the above vars and turn them into css variables*/
+	}
+}
+
+@mixin var ($property ,$value){
+	#{$property}: map-get($vars, $variable);
+	#{$propery}: var(--#{$variable});
+}                                              /* this takes care of all fall backs */
+
+body{
+	@include var(color , lightblue);
+}
+
+/******************************* POSITIONING STUFF **************************************/
+
+to center divs inside a container 
+set container position:relative;
+and position of divs position:absolute;
+
+/********************************** CENTERING ****************************************/
+
+/********************************* BACKGROUNDS ********************************************/
+
+.page1{
+background:url("a.jpg") fixed;          /******* for fixed background ***********/
+}
+
+.page1{
+	background: url("a.jpg") no-repeat center center;      /*responsive bckgrnd img */
+}
+
+.container{                  /* multiple background */
+background-image:url("r1.gif"),url("e2.gif"),url("s1.png"),url("sky4.jpg");
+background-position:10% 50%,75% 20%,0% 0%,0% 0%;
+background-repeat:no-repeat,no-repeat,repeat,repeat;
+}
+
+img{
+outline:4px solid #76bdde;
+outline-offset:-17px;                  /* outline offset */
+}
+
+/****************************** setting semi trans background when scrolled *******************/
+
+.page1{
+	background: url("a.jpg") no-repeat center center;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+.page2{
+	background-color: black;
+	opacity: 0.75;
+	
+}
+.page2wrapper{
+	background: url("a.jpg") no-repeat center center;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+/************************************* SKEWED DIVS **************************/
+
+.container{
+	width: 100%
+	height:60vh;
+	background-color: yellow;
+}
+.container:after{
+	content: :'';
+
+}
+
+/************************************** FLEXBOX ***************************************/
+
+.parent{
+	display: flex;                      
+	flex-direction: row/column;
+	flex-wrap: wrap;
+	justify-content: space-between/center/flex-start/space-around/space-evenly;
+	align-items: center/flex-start/flex-end/baseline/stretch;
+	flex-flow: row nowrap/row wrap/column wrap/column nowrap;      
+}                                   /* flex flow is flexdirection, flexwrap*/
+
+.child{
+	flex-grow: 1;                  /* if flex grow of all items are 1 they will grow
+	                                 equally to occupy whole parent*/
+	flex-basis: 20%/5rem ; 	       /* default size of element before space redistribution */
+}
+
+/************************ to align a div vertically n horizontally ***************************/
+
+.parent{                       
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+/***************************** responsive nav using flex *******************************/
+
+.large-screen-parent{         
+	flex-flow:row wrap;             /*align items to end line on main axis */
+	justify-content: flex-end; 
+}
+
+.medium-screen-parent{
+	justify-content: space-around;
+}
+
+.small-screen-parent{
+	flex-direction: column;
+}
+
+/***************************** product page layout using flex ********************************/
+
+<div class="products">
+	<div class="product-card">
+		<div class="product-image">
+			<img src="assets/img/coat-01.jpeg">
+		</div>
+		<div class="product-info">
+			<h5>Winter Jacket</h5>
+			<h6>$99.99</h6>
+		</div>
+	</div>
+	<!-- many more product cards-->
+</div>
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product-card {
+  padding: 2%;
+  flex-grow: 1;                /* so that each child grows equally*/
+  flex-basis: 16%;             /* as we want almost 5 childrens in 1 row*/
+
+  display: flex;          /* so child elements can use flexbox stuff too*/
+}
+
+.product-info {
+  margin-top: auto;           /* bottom aligning products footer */
+}
+
+/** for responsiveness change the flex basis accordingly 
+    for mobiles set flex direction column  **********/
+
+/**************************************************************************************
+*************************************** NAV BAR ***************************************
+****************************************************************************************/
+
+<div class="header">
+	<div class="navwrapper">
+		<div class="nav">
+			<div class="logo">
+				<h1 style="margin: 0;"><a href="#">DRIVE</a></h1>
+			</div>					
+			<ul class="navlist">
+				<li id="li1" class="iamselected"><a href="#">Home</a></li>
+				<li id="li2"><a href="#">About</a></li>
+				<li id="li3"><a href="#">Gallery</a></li>
+				<li id="li4"><a href="#">Work</a></li>
+				<li id="li5"><a href="#" style=" padding-right: 0px;">Contact-us</a></li>					
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+.nav{
+	font-family:'Dancing Script', cursive;
+}
+a{
+	text-decoration: none;
+}
+.nav ul{
+	list-style: none;                 /* remove dots of li */
+	margin: 0;
+	padding: 0;
+}
+.nav li{
+	display: inline-block;            /* to allign nav items horizontally */
+}
+.nav a{
+	color: white;
+}
+
+.navwrapper{
+	background: rgba(0, 0, 0, 0.1);
+	border-bottom: 0.1px solid rgba(255, 255, 255, 0.2);
+}
+.logo h1{
+	font-weight: 700;
+    text-shadow: 3px 2px 0px #fff;
+    line-height: 0.87;
+}
+                               /***************************for fixed nav*********************/
+.header{
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+.page2content,.page3content{
+	margin-top: 50px;          /* set margin top equal to header ka height*/
+}
+
+/************************** MOBILES ******************************************/
+@media screen and (max-width: 480px){
+
+}
+
+/******************************** TABLETS *******************************/
+
+@media screen and (min-width: 481px) and (max-width: 768px){
+	
+	.navlist li{
+		font-size: 1.13rem;
+	}
+	.iamselected{
+		border-bottom: 1.5px solid white;
+		margin-bottom: -12px;
+		padding-bottom: 10.5px;
+	}
+	.logo{
+		padding-bottom: 4%;
+	}
+	.navwrapper{
+		padding-top: 1.3rem;
+	    padding-right: 1rem;
+	    padding-bottom: 0.7rem;
+	    padding-left: 1rem;
+	}
+	.navlist li a{
+		padding: 20%;
+	}
+	.navlist{
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: space-between;
+	}
+	.navlist li{
+		flex-grow: 1;
+	}
+
+}
+
+/******************************** DESKTOPS ******************************/
+@media screen and (min-width:769px ){
+	.navwrapper{
+		padding-top: 2.1rem;
+    	padding-right: 1rem;
+    	padding-bottom: 0.7rem;
+    	padding-left: 1rem;
+	}
+	.nav{
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: space-between;
+	}
+	.logo{
+		flex-basis: 20%;
+	}	
+	.navlist{
+		flex-basis: 55%;
+	}
+	.navlist li{
+		font-size: 1.3rem;
+	}
+	.navlist li a{
+		padding: 20%;
+	}
+	.navlist{
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: flex-end;
+		align-items: flex-end;
+	}
+	.navlist li{
+		flex-grow: 1;
+	}
+	.iamselected{
+		border-bottom: 3px solid white;
+		margin-bottom: -12px;
+		padding-bottom: 9px;
+	}
+}
+
+
+/*****************************************************************************************
+*******************************  end of nav **********************************************
+******************************************************************************************/
+
+/*****************************************************************************/
+/*********************** CSS GRID ****************************************/
+
+/* 1. build mobile -first layout without grid
+   2. this layout fill be fallback for older browsers
+   3. at appropriate breakpoints create grid with grid areas
+   4.use firefox it has grid inspector*/
+
+.parent{
+	display: grid;
+	grid-template-columns:2fr 1fr 1fr;  // or em, px, % etc
+	grid-template-rows:auto 1fr 3fr;
+}
+// grid now automatically populates cell from left to right n top to bottom
+
+.childA{
+	grid-column:2/4;   // start from grid column 2 to 4
+	grid-row:2/3;       // start from grid row 2 to 3
+}
+
+.childB{
+	grid-column:1/2;
+	grid-row:1/2;
+}
+
+/* if you hate counting stuff and keeping track of line nos */
+
+.parent{
+	display: grid;
+	grid-template-columns:2fr 1fr 1fr;  // or em, px, % etc
+	grid-template-rows:auto 1fr 3fr;
+
+	grid-template-areas:
+	"title title title"
+	"main header header"
+	"main sidebar footer";
+}
+
+.childA{
+	grid-area:header;
+}   
+/* this child a will occupy every cell that has name header 
+   i.e row 2 /3 and column 2/4 */
+
+/*AWESOME SHORTHANDS */
+
+.parent{
+	display: grid;
+	grid-template-columns:repeat(6, 1fr);
+	/* same as grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr; */
+	grid-template-rows:200px min-content;
+
+	grid-gap:1rem 2vw;
+	/* 1rem for rows 2vw for column*/
+	gap:1rem; /* 1rem for both*/
+
+	grid-template-columns:repeat(auto-fill ,minmax(200px,auto));
+}
+.cell{
+	grid-row:span 2; /* this cell will span 2 rows n 4 columns*/
+	grid-column:span 4;
+}
+/* naming lines */
+.container{
+	grid-template-columns:
+	[full-start] 1fr [content-start] 30em [content-end] 1fr [full-end];
+	/* the first line will be named full-start and then 1fr space second line will be named content-start and so on*/	
+}
+.cell1{
+	grid-column:content-start/content-end;
+}
+
+
+
+
+
+
+
+
+/************************ END OF GRID ************************************/
+/*************************************************************************/
+/*********************************** BUTTONS ***********************************************/
+#buttonout{
+outline:3px solid #229cc5;                     /*  outline hover  */
+transition:all ease-in-out 400ms;
+}
+#buttonout:hover{
+outline:3px solid #229cc5;
+outline-offset:5px;
+}
+#buttonin{
+outline:3px solid #229cc5;
+transition:all ease-in-out 400ms;
+}
+#buttonin:hover{
+outline:3px solid white;
+outline-offset:-5px;
+}
