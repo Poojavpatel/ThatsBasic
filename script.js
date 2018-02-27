@@ -40,10 +40,23 @@ $(document).ready(function(){
 
 /******************************** SCROLL MAGIC ************************************/
 
-	/*Step1: INIT SCROLLMAGIC
-	Step2: CREATING SCROLLMAGIC SCENES
+	/*Step1: INIT SCROLLMAGIC and create controller
+	Step2: CREATING SCROLLMAGIC SCENES and adding them to controller
 	Step3: DURATION AND TRIGGERHOOK POSITION
-	Step4: FOR EACH LOOP */
+
+	YOU CAN EITHER 
+
+	 .setClassToggle	.setPin		.setTween(TweenMax.from())
+
+	//create a new timeline
+		var parallaxTl = new TimelineMax();
+	//adding tweens to the timeline
+		parallaxTl
+			.from('.content-wrapper', 0.9 ,{ autoAlpha:0 , ease:Power0.easeNone} ,0.9)/* delay of 0.3 */
+			/*.from('.bcg', 2, {y:'-50%' , ease:Power0.easeNone} ,0)/* should start at 0 along with content wrapper and not after it
+			;*/
+	//then add timeline to tween          .setTween(parallaxTl)	
+		 	
 	
 	var controller = new ScrollMagic.Controller();  /*tells browser to use scrollbar and trigger animations*/
 	

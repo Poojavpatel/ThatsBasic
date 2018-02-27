@@ -7,7 +7,7 @@ body{
 	font-family: sans-serif;
 	text-align: center;
 }
-*{
+*,*:before,*:after{
 	box-sizing: border-box;       /* width incluuding margin padding */
 }
 a{
@@ -91,13 +91,34 @@ body{
 
 /******************************* POSITIONING STUFF **************************************/
 
-to center divs inside a container 
-set container position:relative;
-and position of divs position:absolute;
+To position elements within parent
+.child{
+	position: absolute;
+}
+.parent{
+	position: relative;
+}
+
+ // z-index works only if position is defined //
 
 /********************************** CENTERING ****************************************/
+for horizontally
+.box{
+	margin:0 auto;
+}
 
 /********************************* BACKGROUNDS ********************************************/
+/* Adding an opaque layer using multiple backgrounds */
+.page1{
+    width: 100%;
+    height: 100vh;
+    background:linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)),url(../img/b.jpeg);
+    /* applying opaque layer using multiple backgrounds and liner gradient */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-attachment: fixed;
+}
 
 .page1{
 background:url("a.jpg") fixed;          /******* for fixed background ***********/
@@ -116,6 +137,30 @@ background-repeat:no-repeat,no-repeat,repeat,repeat;
 img{
 outline:4px solid #76bdde;
 outline-offset:-17px;                  /* outline offset */
+}
+
+
+/* Skewed transparent overlay & Gradient on button and button hover (COMING SOON)*/
+.wrapper{
+	background: linear-gradient(-55deg, transparent 25%, #16181E 25%, #16181E 75%, transparent 75%, transparent 100%);
+	/*background: linear-gradient(-210deg, transparent 0%, #16181E 0%, #16181E 70%, transparent 50%, transparent 100%);*/
+}
+.btn{
+	background: linear-gradient(to right, #252AFF 0%, #25FFED 100%);
+    border-image: linear-gradient(to bottom right, #252AFF 0%, #25FFED 100%);
+	border-image-slice: 1;
+	border-width: 1px;
+    border-style: solid;
+}
+.btn:hover{
+	background: none;
+	border-image: linear-gradient(to bottom right, #252AFF 0%, #25FFED 100%);
+	border-image-slice: 1;
+	border-width: 1px;
+    border-style: solid;
+}
+.wrappermobile{
+	background: linear-gradient(-210deg, transparent 0%, #16181E 0%, #16181E 70%, transparent 50%, transparent 100%);
 }
 
 /****************************** setting semi trans background when scrolled *******************/
@@ -224,6 +269,27 @@ outline-offset:-17px;                  /* outline offset */
 
 /** for responsiveness change the flex basis accordingly 
     for mobiles set flex direction column  **********/
+
+
+/*********************** SEAMLESS RESPONSIVE PHOTO GRID ****************************/
+.gallerycontainer{
+    width: 100%;
+    min-height: 100%;
+    height: auto;
+}
+.gallerycontainer{
+    line-height: 0;
+    column-count:5;
+    column-gap:0px;
+}
+.gallerycontainer img{
+    width: 100%;
+    height: auto;
+}
+
+/* FOR RESPONSIVE JUST CHANGE COLUMN COUNT IN MEDIA QUERIES */
+
+/********************** SEAMLESS RESPONSIVE GRID ENDS ****************************/
 
 /**************************************************************************************
 *************************************** NAV BAR ***************************************
