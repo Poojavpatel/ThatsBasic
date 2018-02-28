@@ -33,6 +33,36 @@ $(document).ready(function(){
 	TweenLite.to(image,1,{width:100 , ease:Power0.easeNone});  /*default*/
 	/* power can be anything from 0 to 4 ease can be easeIn easeOut etc */
 
+	/* callback functions */
+	TweenLite.from(image,1,{x:200 , ease:Power0.easeNone , onStart: onStart , onUpdate:onUpdate ,onComplete:onComplete});
+	/* a function onStart will run when the animation starts */
+	function onStart(){
+		console.log("look i have started");
+	}
+	function onUpdate(){
+		i=0;
+		console.log("i am running");
+		h2.text(i++);  /*i will change from 0 to some no during thr animation */
+	}
+	function onComplete(){
+		console.log("animation is completed");
+	}
+
+	/* Animating multiple objects  MAKING A TIME LINE using TimelineMax */
+	//create new timeline
+	tl = new TimelineLight();
+	//adding tweens to timeline
+	// tl
+	// 	.from(h1,1,{autoAlpha:0, delay:0.2})
+	// 	.from(h2,1,{autoAlpha:0, delay:0.4})
+	// 	.from(h3,1,{autoAlpha:0, delay:0.6});
+	/* donot includedelays | they will start automatically one after another */
+	tl
+		.from(h1,1,{autoAlpha:0})
+		.from(h2,1,{autoAlpha:0}, '-=0.15') /* indicates it should start 0.15 sec earlier than start of tween */ 
+		.from(h3,1,{autoAlpha:0});
+
+
 	
 });
 </script>
