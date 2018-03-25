@@ -286,8 +286,12 @@ outline-offset:-17px;                  /* outline offset */
     width: 100%;
     height: auto;
 }
-
 /* FOR RESPONSIVE JUST CHANGE COLUMN COUNT IN MEDIA QUERIES */
+
+/* css multiple column has a column-count 
+property used to display a single para as equal width columns
+   column-gap decides the gap between columns 
+   As it works with text it works with images too */
 
 /********************** SEAMLESS RESPONSIVE GRID ENDS ****************************/
 
