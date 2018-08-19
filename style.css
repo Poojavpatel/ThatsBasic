@@ -1,3 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+font-family: 'Open Sans', sans-serif;
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
+font-family: 'Open Sans Condensed', sans-serif;
+
+@import url('https://fonts.googleapis.com/css?family=Lato');
+font-family: 'Lato', sans-serif;
+
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed');
+font-family: 'IBM Plex Sans Condensed', sans-serif;
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+font-family: 'Roboto', sans-serif;
+
+@import url('https://fonts.googleapis.com/css?family=PT+Sans');
+font-family: 'PT Sans', sans-serif;
+
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+font-family: 'Raleway', sans-serif;
+
+
 /***************************** DEFAULTS ***************************************/
 body{
 	margin: 0;
