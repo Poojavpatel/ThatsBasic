@@ -2,6 +2,35 @@ $(document).ready(function(){
 	
 });
 
+
+/*********************************** API n http client ********************************/
+/*  CDN for Axios the http client */
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+// Performing a GET request with axios
+
+// Make a request for a user with a given ID
+/*  http://www.omdbapi.com/?apikey=ecc4bdf9&s=home  */
+axios.get('/user?ID=12345')
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+
+
+
+/* OMDb api */
+http://www.omdbapi.com?s=
+
+http://www.omdbapi.com/?apikey=[yourkey]&        /* send all req to */
+
+http://img.omdbapi.com/?apikey=[yourkey]&        /* poster api req */
+
+
+
 /********************************* GREEN SOCK *************************************/
 $(document).ready(function(){
 
